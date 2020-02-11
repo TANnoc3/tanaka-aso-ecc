@@ -4,7 +4,7 @@
 
 ![topology](./images/topo.png)
 
-今まで`public`側で運用していたwebサーバを`internal`に移行したところ、`public`側からはwebページを見ることができるが、`internal`側からは見れなくなってしまった。
+今まで`public`側で運用していたwebサーバをNAT環境の`internal`に移行したところ、`public`側からはwebページを見ることができるが、`internal`側からは見れなくなってしまった。
 
 `router`を操作して`internal`側からもwebサーバを閲覧できるようにしてください。また、`internal`側に新たにホストを追加した際もwebサーバを見れるようにすること。
 

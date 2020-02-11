@@ -41,3 +41,5 @@ iptables -t nat -A POSTROUTING -o $HOSTONLY_IF -s $INTERNAL_NW -j MASQUERADE
 
 systemctl stop systemd-resolved 
 systemctl disable systemd-resolved
+
+echo 'nameserver 192.0.2.53' > /etc/resolv.conf
