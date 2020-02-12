@@ -29,15 +29,14 @@ dhcpd -cf /etc/dhcp/dhcpd.conf
 echo 1 > /proc/sys/net/ipv4/ip_forward
 sed -i 's/^#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1' /etc/sysctl.conf
 
-# NAT initialization
-iptables --flush
 # DNAT 
 iptables -t nat -A PREROUTING -p tcp \
 	--dst $ROUTER_PUB_IP --dport 80 -j DNAT \
 	--to-destination $WEB_INTERNAL_IP
+
 # MASQUERADE
-iptables -t nat -A POSTROUTING -o $PUB_IF -d $PUB_NW -s $INTERNAL_NW -j MASQUERADE
-iptables -t nat -A POSTROUTING -o $HOSTONLY_IF -s $INTERNAL_NW -j MASQUERADE
+iptables -t nat -A POSTROUTING -o $PUB_IF -d $PUB_NW -s $INTERNAL_NW -j MASQUERADE -m comment --comment "NAPT from internal to public"
+iptables -t nat -A POSTROUTING -o $HOSTONLY_IF -s $INTERNAL_NW -j MASQUERADE -m comment --comment "NAPT from internal to INTERNET"
 
 systemctl stop systemd-resolved 
 systemctl disable systemd-resolved
