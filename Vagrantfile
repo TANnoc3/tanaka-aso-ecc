@@ -6,7 +6,7 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/bionic64"
+	config.vm.box = "ubuntu/bionic64"
 	config.vm.box_version = "20190801.1.0"
 
 	config.vm.define :router do |node|
