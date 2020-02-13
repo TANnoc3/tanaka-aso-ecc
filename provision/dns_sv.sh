@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+apt update
 apt install -y unbound 
 
 cat <<EOF > /etc/unbound/unbound.conf
@@ -28,5 +29,8 @@ EOF
 
 systemctl stop systemd-resolved 
 systemctl disable systemd-resolved
+
 echo 'nameserver 127.0.0.1' > /etc/resolv.conf
-/etc/init.d/unbound restart
+
+systemctl restart unbound
+systemctl enable unbound

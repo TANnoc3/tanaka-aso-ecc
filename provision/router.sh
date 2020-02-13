@@ -8,6 +8,7 @@ PUB_IF="enp0s8"
 INTERNAL_IF="enp0s9"
 HOSTONLY_IF="enp0s3"
 
+apt update
 apt install -y isc-dhcp-server
 
 cat <<EOF > /etc/default/isc-dhcp-server

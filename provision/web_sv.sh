@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+apt upate
 apt install -y nginx
 
 if [ ! -d /data ]; then
@@ -41,7 +42,7 @@ http {
 }
 EOF
 
-/etc/init.d/nginx restart
+systemctl restart nginx
 
 ip route del default
 ip route add default via 10.0.0.254

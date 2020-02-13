@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+apt update
 apt install -y curl 
 
 systemctl stop systemd-resolved 
