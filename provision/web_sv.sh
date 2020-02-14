@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-apt upate
+apt update
 apt install -y nginx
 
 if [ ! -d /data ]; then
